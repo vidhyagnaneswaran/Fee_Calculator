@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FeeCalculator.CrossCutting\FeeCalculator.CrossCutting.csproj" />
+    <ProjectReference Include="..\FeeCalculator.Data\FeeCalculator.Data.csproj" />
+    <ProjectReference Include="..\FeeCalculator.Model\FeeCalculator.Model.csproj" />
+  </ItemGroup>
+
+</Project>

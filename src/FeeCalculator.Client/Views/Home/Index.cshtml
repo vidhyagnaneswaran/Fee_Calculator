@@ -1,0 +1,68 @@
+﻿@using FeeCalculator.CrossCutting.Helpers;
+
+
+@{
+    ViewData["Title"] = "Parking Calculator";
+}
+
+
+
+<div class="text-center">
+    <h3 class="display-4">Welcome to the Parking Calculator</h3>
+    <h5>Please enter the Date and Time for calculating the parking charges:</h5>
+</div>
+<br />
+
+<div class="row" id="feeCalculator">
+
+    <div class="col-md-12">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+        {
+            <div id="Parking">
+                <div class="col-lg-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h5>Enter ENTRY date & time (DD/MM/YYYY HH:mm) : </h5>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBox("dateFrom", CommonUtils.ToLocalNowDate, new { @class = "form-control date-control", required = "required", onchange = "ConvertDateTime(this)" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" style="padding-left: 0px">
+
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <h5>Enter EXIT date & time (DD/MM/YYYY HH:mm) : </h5>
+                        </div>
+                        <div class="col-md-12">
+                            @Html.TextBox("dateTo", CommonUtils.ToLocalNowDatePlus1Hour, new { @class = "form-control date-control", required = "required", onchange = "ConvertDateTime(this)" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" style="padding-left: 0px">
+                    <div class="form-group">
+                        <div class="col-md-12">
+                            <button type="submit" id="search" class="btn btn-dark form-control" name="submit" value="Calculate">Calculate</button>&nbsp;&nbsp;
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+    
+    <div class="row">
+        <div class="alert-danger font-weight-bold">
+            <span for="errorMessage">@(ViewData["message"])</span>
+            <br />
+        </div>
+        <div class="alert-success font-weight-bolder">
+            <span for="errorMessage">@(ViewData["response"])</span>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript" src="~/js/parking.index.js"></script>
+}
